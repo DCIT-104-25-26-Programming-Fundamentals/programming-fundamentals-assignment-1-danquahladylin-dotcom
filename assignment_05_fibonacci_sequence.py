@@ -49,3 +49,70 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 5
+# Topic: Loops, Sequences, and Functions
+# =============================================================================
+
+
+def generate_fibonacci(n):
+    """Part A: Generates a list containing the first N Fibonacci numbers."""
+    if n <= 0:
+        return []
+
+    sequence = []
+    a, b = 0, 1
+
+    for _ in range(n):
+        sequence.append(a)
+        a, b = b, a + b
+
+    return sequence
+
+
+def is_fibonacci(number):
+    """Part B: Checks if a given non-negative number belongs to the Fibonacci sequence."""
+    if number < 0:
+        return False
+
+    a, b = 0, 1
+    while a < number:
+        a, b = b, a + b
+
+    # If 'a' stops right on 'number', it is part of the sequence
+    return a == number
+
+
+def main():
+    try:
+        # --- PART A: Print First N Terms ---
+        print("=== PART A: Generate Fibonacci Sequence ===")
+        n = int(input("How many terms? "))
+
+        if n <= 0:
+            print("Error: Please enter a positive integer greater than 0.")
+        else:
+            fib_list = generate_fibonacci(n)
+            # Convert numbers to strings and join them with spaces
+            print("Fibonacci sequence:", " ".join(map(str, fib_list)))
+
+        print()
+
+        # --- PART B: Check Membership ---
+        print("=== PART B: Check Fibonacci Membership ===")
+        num_to_check = int(input("Enter a number to check: "))
+
+        if num_to_check < 0:
+            print(f"{num_to_check} is NOT a Fibonacci number.")
+        elif is_fibonacci(num_to_check):
+            print(f"{num_to_check} is a Fibonacci number.")
+        else:
+            print(f"{num_to_check} is NOT a Fibonacci number.")
+
+    except ValueError:
+        print("Error: Please enter a valid integer.")
+
+
+if __name__ == "__main__":
+    main()
+
